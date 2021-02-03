@@ -1,0 +1,20 @@
+Get Product retorna 404 si no existe., debería retornar un 200 con cuerpo vacío o 204.
+
+En el docker-compose van los servicios y en el override pones la configuración de estos
+
+docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management --el 15672 es para la UI y el 5672 es rabbitmq
+
+revisar en el Dating App como está inyectado el AutoMapper, hay un package que te permite inyectarlo con un método de extensión
+
+
+Por lo que veo las Bds están exponiendo los puertos, creo que deberían ser accedidas solo por los servicios dentro de docker.
+
+La Core layer de Ordering solo guarda contratos(interfaces) y entidades
+
+docker-compose restart:on-failure hace que si no se puede iniciar el container trate devuelta, está bueno si dependes de otros servicios, ya que sigue tratando hasta que los otros servicios esten disponibles.
+            
+Hay anotaciones en API.Infrastructure acerca de los cambios realizados para poder correr las migraciones, ya que entityframework tools está en una librería y no en un proyecto como tal.
+
+En la UI hay una implementación interesante de como consumir servicios con pedidos HTTP, entre las cosas que resalta es que:
+	El cliente HTTP debería ser Singleton, ya que si creas varios hay una degradación en la performance por "Port Exhaustion".
+	Basicamente con los componentes dentro de infrastructure es más facil y prolijo implementar los métodos para consumir APIs.
