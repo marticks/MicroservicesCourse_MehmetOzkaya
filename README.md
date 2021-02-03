@@ -1,7 +1,7 @@
 Implementation of Mehmet Ozkaya's Microservices Course.
 Original Repo: https://github.com/aspnetrun/run-aspnetcore-microservices
 
-Basic implementation of a microservice architecture for a e-commerce application. Great Course
+Basic implementation of a microservice architecture for a e-commerce application.
 
 Architecture:
 
